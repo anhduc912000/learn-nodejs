@@ -1,4 +1,10 @@
 h1 User List
+
+form(action="/users/search", method="get")
+    input(type="text", name="q")
+    input(type="submit", value="search")
+    //chú ý thuộc tính input là submit hoặc chọn là button
+//- lặp lấy ra danh sách
 ul  
     each user in users
         li= user.name

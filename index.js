@@ -34,6 +34,19 @@ app.get('/users', function(req, res){
     })
 })
 
+// query parameter
+
+app.get('/users/search', function(req, res){
+    var q= req.query.q;
+    var nameSearch = users.filter(function(user){
+        return user.name.toLowerCase().indexOf(q.toLowerCase()) !== -1
+    })
+
+    res.render('users/index', {
+        users: nameSearch
+    })
+})
+
 //listen port 
 app.listen(port, function(){
     console.log('server is listening on port ' + port)
