@@ -1,50 +1,40 @@
-// const express = require('express')
-// const app = express()
-// const port = 8080
+// require các thư viện cần thiết
 
-// app.get('/', (req, res) => res.send('Hello World!'))
+var express= require('express');
 
-// app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+// đặt tên biến
+var app= express();
+var port= 8080;
 
+var users = [
+    {id: 1, name: 'anh duc'},
+    {id: 2, name: 'sugi'}
+]
 
-
-
-// setup express server
-
-var express = require('express');
-var app = express();
-var port = 8080;
-
+// require template engine pug.js
+    // b1 set thư viện pug
+    // b1 tạo thư mục views và file index trong thư viện
 app.set('view engine', 'pug');
-app.set('views', './views');
+app.set('views', './views')
 
+// tạo route
 app.get('/', function(req, res){
-    res.render('index', {
-        // đường dẫn và object
-        name: 'anh duc'
 
-    });
-});
-
-app.get('/users', function(req,res){
-    res.render('users/index', {
-      users: [
-           { id: 1, name: 'anh duc'},
-           { id: 2, name: 'anh duc 2'}
-
-        //    chú ý dâu = và đấu :
-       ]
-    });
-});
-
-app.listen(port, function(){
-    console.log('server listening port ' + port);
+    // có 2 method send để gửi string và render để trả về file html
+//  res.send('<h1>hello</h1>');
+res.render('index',{
+    name: 'anhduc' // chú í dấu : 
+} );
+// bao gồm đường dẫn tới file pug muốn hiển thị và một object
 })
 
-//template engine pug, ejs, mustache
+app.get('/users', function(req, res){
+    res.render('users/index', {
+        users: users
+    })
+})
 
-// trang chủ pugjs.org 
-//pughtml.com
-
-
-
+//listen port 
+app.listen(port, function(){
+    console.log('server is listening on port ' + port)
+});
