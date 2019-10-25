@@ -1,13 +1,16 @@
-h1 User List
-a(href="/users/create") Create New
-form(action="/users/search", method="get")
-    input(type="text", name="q")
-    input(type="submit", value="search")
-    //chú ý thuộc tính input là submit hoặc chọn là button
-//- lặp lấy ra danh sách
-ul  
-    each user in users
-      li
-        span= user.name
-        span &nbsp
-        a(href="/users/" + user.id) View
+extends ../layouts/common.pug
+block content
+
+  h1 User List
+  a(href="/users/create") Create New
+  form(action="/users/search", method="get", class="d-flex")
+      input(type="text", name="q", class="form-control")
+      input(type="submit", value="search", class="ml-2")
+      //chú ý thuộc tính input là submit hoặc chọn là button
+  //- lặp lấy ra danh sách
+  ul  
+      each user in users
+        li
+          span= user.name
+          span &nbsp
+          a(href="/users/" + user.id) View

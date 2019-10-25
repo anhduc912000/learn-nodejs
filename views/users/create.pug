@@ -1,5 +1,7 @@
-h1 add new 
-form(action="/users/create", method="post")
-    label Add New member
-    input(type="text", name="name")
-    button Create
+extends ../layouts/common.pug
+block content
+    h1 add new 
+    form(action="/users/create", method="post")
+        label Add New member
+        input(type="text", name="name")
+        button Create
