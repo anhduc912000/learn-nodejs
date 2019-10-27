@@ -1,16 +1,26 @@
 extends ../layouts/common.pug
+
 block content
 
-  h1 User List
-  a(href="/users/create") Create New
+  h1 User List 
+  a(class="btn btn-outline-primary m-3", href="/users/create") Create New
   form(action="/users/search", method="get", class="d-flex")
+      label(for="q") Name
       input(type="text", name="q", class="form-control")
-      input(type="submit", value="search", class="ml-2")
+      label(class="ml-3", for="phone") Phone
+      input(type="text", name="phone", class="form-control")
+      input(type="submit", value="search", class="ml-2 btn btn-primary")
       //chú ý thuộc tính input là submit hoặc chọn là button
   //- lặp lấy ra danh sách
   ul  
+    table.table
+      tr
+        th name
+        th phone
+        th
       each user in users
-        li
-          span= user.name
-          span &nbsp
-          a(href="/users/" + user.id) View
+        tr
+          td= user.name
+          td= user.phone
+          td
+            a(href="/users/" + user.id) View

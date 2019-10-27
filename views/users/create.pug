@@ -1,7 +1,13 @@
 extends ../layouts/common.pug
 block content
     h1 add new 
-    form(action="/users/create", method="post")
-        label Add New member
-        input(type="text", name="name")
-        button Create
+    if errors
+        each error in errors
+            .alert.alert-danger= error
+
+    form(action="/users/create", method="post", class="d-flex")
+        label(for="name") Name
+        input(type="text", name="name", class="form-control", value=values?values.name:'')
+        label(class="ml-3", for="phone") Phone
+        input(type="text", name="phone", class="form-control", value=values?values.phone:'')
+        input(type="submit", value="Create", class="ml-2 btn btn-primary")
