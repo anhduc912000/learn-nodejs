@@ -11,7 +11,10 @@ router.get('/search', controller.search);
 router.get('/create', controller.create);
 router.get('users/:id', controller.getId);
 router.get('/:id', controller.get)
-
+router.get('/cookie', function(req, res, next){
+    res.cookie('user-id', 12345);
+    res.send(' hello ');
+} )
 router.post('/create', validate.postCreate, controller.postCreate);
 
 
