@@ -1,6 +1,12 @@
 extends ../layouts/common.pug
 block content
     h1 view user
-    p
-        b Name 
-        span= user.name
+    ul  
+    table.table
+      tr
+        th name
+        th phone
+        th
+        tr
+          td= user.name
+          td= user.phone

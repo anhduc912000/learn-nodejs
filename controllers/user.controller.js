@@ -42,21 +42,7 @@ module.exports.get = function(req, res){
     });
  }
 module.exports.postCreate = function(req, res){
-    let errors = [];
-    req.body.id = shortid.generate();    
-    if(!req.body.name){
-        errors.push('name is required.');
-    }
-    if(!req.body.phone){
-        errors.push('phone is required.');
-    }
-    if(errors.length){
-    res.render('users/create',{
-        errors: errors,
-        values: req.body
-    });
-    return
-    }
+    req.body.id = shortid.generate();
     db.get('users').push(req.body).write();
     res.redirect('/users');
 }
