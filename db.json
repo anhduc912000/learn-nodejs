@@ -13,7 +13,14 @@
     {
       "name": "hãng Kyoritsu",
       "phone": "0809393493",
-      "id": "6j9WIq1e"
+      "id": "6j9WIq1e",
+      "email": "anhduc@gmail.com",
+      "password": "12345"
+    },
+    {
+      "name": "hãng Kyoritsu",
+      "phone": "0809393493",
+      "id": "Ctkl_UEO"
     }
   ]
 }
