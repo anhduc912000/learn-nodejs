@@ -2,13 +2,20 @@ html
     head
         link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css", integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous")
         link(rel="stylesheet", href="/styles/styles.css")
-    body
-ul.nav.nav-tabs
-  li.nav-item
-    a.nav-link.active(href='#') Home
-  li.nav-item
-    a.nav-link(href='#') about
-  li.nav-item
-    a.nav-link(href='/login') Login
+body
+  nav.navbar.navbar-expand-lg.navbar-light.bg-light
+    a.navbar-brand(href='#') Navbar
+    button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      ul.navbar-nav.mr-auto
+        li.nav-item.active
+          a.nav-link(href='#')
+            | Home 
+            span.sr-only (current)
+        li.nav-item
+          a.nav-link(href='#') Login
+    if user
+      p= user.name
 .container.pt-5
     block content

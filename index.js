@@ -1,3 +1,8 @@
+// console.log(process.env)
+// console.log(process.env.SESSION_SECRET)
+require('dotenv').config();
+
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser')
@@ -21,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
-app.use(cookieParser())
+app.use(cookieParser(process.env.SESSION_SECRET))
 
 app.get('/', function(req, res){
  res. render('index', {
