@@ -9,6 +9,7 @@ const cookieParser = require('cookie-parser')
 
 const userRoute = require('./routes/users.routes');
 const authRoute = require('./routes/auth.router');
+const productRoute = require('./routes/product.router');
 
 const authMiddleware = require('./middlewares/auth.middleware')
 
@@ -36,5 +37,6 @@ app.get('/', function(req, res){
 
 app.use('/users', authMiddleware.requireAuth, userRoute);
 app.use('/auth', authRoute);
+app.use('/product', productRoute);
 
 app.listen(port, function(){})

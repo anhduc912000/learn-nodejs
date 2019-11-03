@@ -36,7 +36,7 @@ module.exports.get = function(req, res){
    
     let id = req.params.id;
     let user = db.get('users').find({id: id}).value();
-    console.log(user)
+    // console.log(user)
     res.render('users/view', {
         user: user
     });
