@@ -5,9 +5,11 @@ block content
         each error in errors
             .alert.alert-danger= error
 
-    form(action="/users/create", method="post", class="d-flex")
+    form(action="/users/create", method="POST", class="d-flex", enctype="multipart/form-data")
         label(for="name") Name
         input(type="text", name="name", class="form-control", value=values?values.name:'')
         label(class="ml-3", for="phone") Phone
         input(type="number", name="phone", class="form-control", value=values?values.phone:'')
+        label(class="ml-3", for="avatar") Avatar
+        input(type="file", name="avatar", class="form-control-file")
         input(type="submit", value="Create", class="ml-2 btn btn-primary")

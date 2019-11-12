@@ -15,11 +15,14 @@ block content
   ul  
     table.table
       tr
+        th avatar
         th name
         th phone
         th
       each user in users
         tr
+          td 
+            img(src= user.avatar, class="img-thumbnail", width="90")
           td= user.name
           td= user.phone
           td

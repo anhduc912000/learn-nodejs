@@ -2,7 +2,6 @@
 // console.log(process.env.SESSION_SECRET)
 require('dotenv').config();
 
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser')
@@ -10,8 +9,10 @@ const cookieParser = require('cookie-parser')
 const userRoute = require('./routes/users.routes');
 const authRoute = require('./routes/auth.router');
 const productRoute = require('./routes/product.router');
+const cartRoute = require('./routes/cart.router')
 
 const authMiddleware = require('./middlewares/auth.middleware')
+const sessionMiddleware = require('./middlewares/sesion.middleware')
 
 const port = 3000;
 
@@ -28,7 +29,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.use(cookieParser(process.env.SESSION_SECRET))
-
+app.use(sessionMiddleware);
 app.get('/', function(req, res){
  res. render('index', {
      name: 'Anh đức'
@@ -38,5 +39,6 @@ app.get('/', function(req, res){
 app.use('/users', authMiddleware.requireAuth, userRoute);
 app.use('/auth', authRoute);
 app.use('/product', productRoute);
-
+app.use('/cart', cartRoute);
+app.use(express.static(__dirname + '/public'));
 app.listen(port, function(){})
